@@ -6,7 +6,7 @@ export class TodoItem extends Component {
     
     getStyle = () => {
        return {
-           background:'blue',
+           background:'lightGray',
            padding:'10px',
            borderBottom:'1px #ccc dotted',
         //    terrenary if completed is true? 'line-through' else: do this
@@ -14,20 +14,33 @@ export class TodoItem extends Component {
        }
     }
 
-    // markComplete = (e) => {
-    //     console.log(this.props)
-
-    // }
+    btnStyle = () => {
+        return {
+            background:'#ff0000',
+            color:'white',
+            border: 'none',
+            padding: '5px 10px',
+            borderRadoius: '50%',
+            cursor: 'pointer',
+            float: 'right'
+        }
+    }
+   
 
     render() {
+        // console.log(this.props.todo)
         // destructuring so you do not have to write this.props.todo everytime
         const { id, title }= this.props.todo
 
         return (
              <div style={this.getStyle()}>
+             
                 <p>
-                    <input type='checkbox' onChange={this.props.markComplete.bind(this, id)}/>
-                    {title}</p>
+                   <input type='checkbox' onChange={this.props.markComplete.bind(this, id)}/>
+                    {title}
+                    <button onClick={this.props.delTodo.bind(this, id)} style={this.btnStyle()}> X </button>
+                </p>
+            
             </div> 
       
 
